@@ -1,13 +1,13 @@
 package pl.minigames.lotto;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.SneakyThrows;
 
 import java.io.BufferedReader;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
+@Data
 public class LottoPlayerInput {
     public static final int LOWEST_VALUE_OF_RANGE = 1;
     public static final int HIGHEST_VALUE_OF_RANGE = 99;
@@ -30,6 +30,6 @@ public class LottoPlayerInput {
     }
 
     public boolean isInRange(Integer n) {
-        return n >= LOWEST_VALUE_OF_RANGE && n >= HIGHEST_VALUE_OF_RANGE;
+        return n >= LOWEST_VALUE_OF_RANGE && n <= HIGHEST_VALUE_OF_RANGE;
     }
 }
