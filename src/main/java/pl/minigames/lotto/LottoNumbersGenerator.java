@@ -1,7 +1,6 @@
 package pl.minigames.lotto;
 
 import lombok.Data;
-import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Random;
