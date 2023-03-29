@@ -14,6 +14,6 @@ public class LottoHitByThePlayer {
 
         if (result) size = hitedNumbers.size();
 
-        return size;
+        return (Integer) size;
     }
 }
