@@ -18,13 +18,18 @@ public class LottoPlayerInput {
         for (int i = 0; i < 6; i++) {
             while (true) {
                 System.out.print("Podaj liczbę: " + (i + 1) + "/" + "6" + ": ");
-                Integer number = Integer.parseInt(br.readLine());
-                if (isInRange(number)) {
-                    userInputedNumbers.add(number);
-                    break;
-                } else {
-                    System.out.println("Liczby muszą być z zakresu <1,99>");
+                String input = br.readLine();
+                String[] inputNumbers = input.split(",");
+
+                for (String inputNumber : inputNumbers) {
+                    Integer number = Integer.parseInt(inputNumber.trim());
+                    if (isInRange(number)) {
+                        userInputedNumbers.add(number);
+                    } else {
+                        System.out.println("Liczby muszą być z zakresu <1,99>");
+                    }
                 }
+                break;
             }
         }
     }
