@@ -15,5 +15,6 @@ public class LottoGame implements Game {
         System.out.println(NAME_OF_GAME);
         player.inputNumbers(new BufferedReader(new InputStreamReader(System.in)));
         lottoNumbersGenerator.generateSixNumbers();
+        System.out.println(player.getUserInputedNumbers());
     }
 }
