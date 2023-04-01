@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 import static pl.minigames.lotto.LottoConfig.*;
 
 @Data
-public class LottoNumbersGenerator {
+class LottoNumbersGenerator {
 
     Set<Integer> sixWinningNumbers = new HashSet<>();
 
-    public void generateSixNumbers() {
+    void generateSixNumbers() {
         Set<Integer> numbers = new Random()
                 .ints(LOWEST_VALUE_OF_RANGE, HIGHEST_VALUE_OF_RANGE)
                 .distinct()

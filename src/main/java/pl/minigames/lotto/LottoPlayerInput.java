@@ -7,34 +7,39 @@ import java.io.BufferedReader;
 import java.util.HashSet;
 import java.util.Set;
 
+import static pl.minigames.lotto.LottoConfig.*;
+import static pl.minigames.lotto.LottoGameMessages.*;
+
 @Data
-public class LottoPlayerInput {
-    public static final int LOWEST_VALUE_OF_RANGE = 1;
-    public static final int HIGHEST_VALUE_OF_RANGE = 99;
+class LottoPlayerInput {
     Set<Integer> userInputedNumbers = new HashSet<>();
 
     @SneakyThrows
-    public void inputNumbers(BufferedReader br) {
+    void inputNumbers(BufferedReader br) {
         for (int i = 0; i < 6; i++) {
             while (true) {
-                System.out.print("Podaj liczbę: " + (i + 1) + "/" + "6" + ": ");
-                String input = br.readLine();
-                String[] inputNumbers = input.split(",");
-
-                for (String inputNumber : inputNumbers) {
-                    Integer number = Integer.parseInt(inputNumber.trim());
+                System.out.printf(LottoGameMessages.INPUT_NUMBER, (i + 1), MAX_QUANTITY_IN_SET);
+                Integer number;
+                try {
+                    number = Integer.parseInt(br.readLine());
                     if (isInRange(number)) {
-                        userInputedNumbers.add(number);
+                        if (userInputedNumbers.contains(number)) {
+                            System.out.println(SAME_NUMBER_INPUTED);
+                        } else {
+                            userInputedNumbers.add(number);
+                            break;
+                        }
                     } else {
-                        System.out.println("Liczby muszą być z zakresu <1,99>");
+                        System.out.println(QUANTITY_INFO);
                     }
+                } catch (Exception e) {
+                    System.out.println(INVALID_DATA_INPUTED);
                 }
-                break;
             }
         }
     }
 
-    public boolean isInRange(Integer n) {
+    boolean isInRange(Integer n) {
         return n >= LOWEST_VALUE_OF_RANGE && n <= HIGHEST_VALUE_OF_RANGE;
     }
 }

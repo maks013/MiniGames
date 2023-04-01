@@ -1,83 +1,42 @@
 package pl.minigames.lotto;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.mockito.Mockito.doReturn;
 
 class LottoPlayerInputTest {
-    private LottoPlayerInput lottoPlayer;
-    private BufferedReader bufferedReader;
 
-    @BeforeEach
-    void setUp() {
-        lottoPlayer = new LottoPlayerInput();
-        bufferedReader = Mockito.mock(BufferedReader.class);
-    }
+    private final LottoPlayerInput lottoPlayerInput = new LottoPlayerInput();
 
     @Test
-    void inputNumbers_withValidNumbers_shouldAddNumbersToSet() throws IOException {
+    void should_add_validNumbers_to_set() {
         //given
-        Set<Integer> expectedNumbers = new HashSet<>(Arrays.asList(1, 5, 23, 45, 67, 89));
-        doReturn("1,5,23,45,67,89").when(bufferedReader).readLine();
+        String input = "1\n2\n3\n4\n5\n6\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
         //when
-        lottoPlayer.inputNumbers(bufferedReader);
+        lottoPlayerInput.inputNumbers(br);
+        Set<Integer> expectedNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         //then
-        Assertions.assertEquals(expectedNumbers, lottoPlayer.getUserInputedNumbers());
+        assertEquals(expectedNumbers, lottoPlayerInput.userInputedNumbers);
     }
 
     @Test
-    void inputNumbers_withInvalidNumbers_shouldThrowException() throws IOException {
-        //given
-        doReturn("1 5 200 45 67 -10").when(bufferedReader).readLine();
-
-        //when
-        Assertions.assertThrows(NumberFormatException.class, () -> lottoPlayer.inputNumbers(bufferedReader));
-    }
-
-    @Test
-    void isInRange_withValidNumber_shouldReturnTrue() {
-        //given
-        Integer number = 50;
-
-        //when
-        boolean result = lottoPlayer.isInRange(number);
-
-        //then
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    void isInRange_withNumberLessThan1_shouldReturnFalse() {
-        //given
-        Integer number = -10;
-
-        //when
-        boolean result = lottoPlayer.isInRange(number);
-
-        //then
-        Assertions.assertFalse(result);
-    }
-
-    @Test
-    void isInRange_withNumberGreaterThan99_shouldReturnFalse() {
-        //given
-        Integer number = 200;
-
-        //when
-        boolean result = lottoPlayer.isInRange(number);
-
-        //then
-        Assertions.assertFalse(result);
+    void testIsInRange() {
+        assertTrue(lottoPlayerInput.isInRange(1));
+        assertTrue(lottoPlayerInput.isInRange(49));
+        assertFalse(lottoPlayerInput.isInRange(0));
+        assertFalse(lottoPlayerInput.isInRange(50));
     }
 }

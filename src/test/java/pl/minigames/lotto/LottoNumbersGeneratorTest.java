@@ -22,7 +22,7 @@ class LottoNumbersGeneratorTest {
     }
 
     @Test
-    public void testSixWinningNumbers() {
+    public void should_return_sixWinning_numbers() {
         //given
         LottoNumbersGenerator lottoNumbersGenerator = new LottoNumbersGenerator();
         Set<Integer> numbers = new HashSet<>();
