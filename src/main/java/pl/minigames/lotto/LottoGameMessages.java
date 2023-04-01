@@ -9,4 +9,6 @@ class LottoGameMessages {
     static final String INVALID_DATA_INPUTED = "Nieprawidłowe dane wejściowe. Spróbuj ponownie." ;
     static final String SAME_NUMBER_INPUTED = "Podana liczba już została wprowadzona. Podaj inną liczbę." ;
     static final String QUANTITY_INFO = "Liczby muszą być z zakresu <1,99>" ;
+    static final String YOUR_NUMBERS = "Twoje liczby: ";
+    static final String WINNING_NUMBERS = "Wygrywające liczby: ";
 }

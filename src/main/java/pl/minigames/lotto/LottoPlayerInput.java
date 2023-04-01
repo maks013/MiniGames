@@ -12,7 +12,7 @@ import static pl.minigames.lotto.LottoGameMessages.*;
 
 @Data
 class LottoPlayerInput {
-    Set<Integer> userInputedNumbers = new HashSet<>();
+    private Set<Integer> userInputedNumbers = new HashSet<>();
 
     @SneakyThrows
     void inputNumbers(BufferedReader br) {

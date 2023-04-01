@@ -12,7 +12,7 @@ import static pl.minigames.lotto.LottoConfig.*;
 @Data
 class LottoNumbersGenerator {
 
-    Set<Integer> sixWinningNumbers = new HashSet<>();
+    private Set<Integer> sixWinningNumbers = new HashSet<>();
 
     void generateSixNumbers() {
         Set<Integer> numbers = new Random()

@@ -29,7 +29,7 @@ class LottoPlayerInputTest {
         Set<Integer> expectedNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         //then
-        assertEquals(expectedNumbers, lottoPlayerInput.userInputedNumbers);
+        assertEquals(expectedNumbers, lottoPlayerInput.getUserInputedNumbers());
     }
 
     @Test
@@ -37,6 +37,6 @@ class LottoPlayerInputTest {
         assertTrue(lottoPlayerInput.isInRange(1));
         assertTrue(lottoPlayerInput.isInRange(49));
         assertFalse(lottoPlayerInput.isInRange(0));
-        assertFalse(lottoPlayerInput.isInRange(50));
+        assertFalse(lottoPlayerInput.isInRange(100));
     }
 }
