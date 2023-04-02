@@ -9,7 +9,8 @@ Zasady gry
 4. Jeśli użytkownik trafił wszystkie 6 liczb, dostaje informację o wygranej.
 
 Uruchamianie gry
-Pobierz pliki z repozytorium.
-Uruchom plik main.java.
-Podaj 6 liczb z zakresu od 1 do 99.
-Czekaj na wyniki losowania i informację zwrotną.
+
+1. Pobierz pliki z repozytorium.
+2. Uruchom plik main.java.
+3. Podaj 6 liczb z zakresu od 1 do 99.
+4. Czekaj na wyniki losowania i informację zwrotną.
