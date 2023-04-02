@@ -33,7 +33,7 @@ class LottoPlayerInputTest {
     }
 
     @Test
-    void testIsInRange() {
+    void should_be_in_range() {
         assertTrue(lottoPlayerInput.isInRange(1));
         assertTrue(lottoPlayerInput.isInRange(49));
         assertFalse(lottoPlayerInput.isInRange(0));
