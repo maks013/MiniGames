@@ -25,11 +25,11 @@ class LottoPlayerInputTest {
         BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
         //when
-        lottoPlayerInput.inputNumbers(br);
+        Set<Integer> playerInputedSixNumbers = lottoPlayerInput.inputNumbers(br);
         Set<Integer> expectedNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         //then
-        assertEquals(expectedNumbers, lottoPlayerInput.getUserInputedNumbers());
+        assertEquals(expectedNumbers, playerInputedSixNumbers);
     }
 
     @Test

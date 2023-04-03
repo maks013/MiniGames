@@ -4,6 +4,7 @@ import pl.minigames.Game;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Set;
 
 import static pl.minigames.lotto.LottoGameMessages.NAME_OF_GAME;
 
@@ -15,8 +16,9 @@ public class LottoGame implements Game {
     @Override
     public void startGame() {
         System.out.println(NAME_OF_GAME);
-        player.inputNumbers(new BufferedReader(new InputStreamReader(System.in)));
+        Set<Integer> playerInputedSixNumbers = player.inputNumbers(new BufferedReader(new InputStreamReader(System.in)));
         lottoNumbersGenerator.generateSixNumbers();
-        lottoResult.getResult(lottoNumbersGenerator.getSixWinningNumbers(), player.getUserInputedNumbers());
+        Set<Integer> randomSixNumbers = lottoNumbersGenerator.getSixWinningNumbers();
+        lottoResult.getResult(randomSixNumbers, playerInputedSixNumbers);
     }
 }

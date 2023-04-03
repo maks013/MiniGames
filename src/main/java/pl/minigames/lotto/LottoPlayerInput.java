@@ -1,8 +1,5 @@
 package pl.minigames.lotto;
 
-import lombok.Data;
-import lombok.SneakyThrows;
-
 import java.io.BufferedReader;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,11 +7,10 @@ import java.util.Set;
 import static pl.minigames.lotto.LottoConfig.*;
 import static pl.minigames.lotto.LottoGameMessages.*;
 
-@Data
 class LottoPlayerInput {
-    private Set<Integer> userInputedNumbers = new HashSet<>();
 
-    void inputNumbers(BufferedReader br) {
+    Set<Integer> inputNumbers(BufferedReader br) {
+        Set<Integer> userInputedNumbers = new HashSet<>();
         for (int i = 0; i < 6; i++) {
             while (true) {
                 System.out.printf(LottoGameMessages.INPUT_NUMBER, (i + 1), MAX_QUANTITY_IN_SET);
@@ -36,6 +32,7 @@ class LottoPlayerInput {
                 }
             }
         }
+        return userInputedNumbers;
     }
 
     boolean isInRange(Integer n) {
