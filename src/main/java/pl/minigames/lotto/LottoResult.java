@@ -17,7 +17,7 @@ class LottoResult {
         if (randomNumbers.equals(inputedByThePlayer)) {
             System.out.println(WIN);
         } else {
-            System.out.println(LOSE + lottoHitByThePlayer.calculateHits(randomNumbers, inputedByThePlayer));
+            System.out.println(LOSE + lottoHitByThePlayer.calculateHits(inputedByThePlayer, randomNumbers));
         }
     }
 

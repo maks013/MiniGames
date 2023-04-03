@@ -14,7 +14,6 @@ import static pl.minigames.lotto.LottoGameMessages.*;
 class LottoPlayerInput {
     private Set<Integer> userInputedNumbers = new HashSet<>();
 
-    @SneakyThrows
     void inputNumbers(BufferedReader br) {
         for (int i = 0; i < 6; i++) {
             while (true) {

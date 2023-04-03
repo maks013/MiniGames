@@ -1,19 +1,11 @@
 package pl.minigames.lotto;
 
-import lombok.Data;
-
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
 class LottoHitByThePlayer {
-    int calculateHits(Set<Integer> set1, Set<Integer> set2) {
-        Set<Integer> hitedNumbers = new HashSet<>(set1);
-        boolean result = hitedNumbers.retainAll(set2);
-        int size = 0;
-
-        if (result) size = hitedNumbers.size();
-
-        return (Integer) size;
+    int calculateHits(Set<Integer> inputedByThePlayer, Set<Integer> randomNumbers) {
+        Set<Integer> hitedNumbers = new HashSet<>(inputedByThePlayer);
+        return hitedNumbers.retainAll(randomNumbers) ? hitedNumbers.size() : 0;
     }
 }
